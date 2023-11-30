@@ -11,6 +11,23 @@ def ClearConsole():
     return system('cls' if name == 'nt' else 'clear')
 
 def SecretNumber(trys, min_range, max_range):
+
+    while max_range < min_range:
+        max_range = randint(min_range, max_range)
+        if (max_range - min_range) != 15:
+            max_range = randint(min_range, max_range)
+    while min_range > max_range:
+        min_range = randint(min_range, max_range)
+        if (max_range - min_range) != 15:
+            min_range = randint(min_range, max_range)
+    while min_range == max_range:
+        min_range = randint(min_range, max_range)
+        max_range = randint(min_range, max_range)
+        if (max_range - min_range) != 15:
+            min_range = randint(min_range, max_range)
+            max_range = randint(min_range, max_range)
+
+    """
     if max_range < min_range: 
         while max_range < min_range:
             max_range = randint(min_range, max_range)
@@ -29,7 +46,7 @@ def SecretNumber(trys, min_range, max_range):
             max_range = randint(min_range, max_range)
             if (max_range - min_range) < trys:
                 min_range = randint(min_range, max_range)
-
+    """
     secret_number = randint(min_range, max_range)
     return min_range, max_range, secret_number
 
